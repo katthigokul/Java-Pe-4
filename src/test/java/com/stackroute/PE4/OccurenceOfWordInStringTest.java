@@ -23,13 +23,21 @@ public class OccurenceOfWordInStringTest {
     }
 
     @Test
-    public void givenStringAndPatternShouldReturnTheStringArray() {
-        assertTrue(occurenceOfWordInString.setString("How is the weather today"));
-        List<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add("7-10");
-        expectedOutput.add("14-17");
-        assertEquals(expectedOutput, occurenceOfWordInString.getoccurenceOfWordInString("the"));
+    public void givenStringAndPatternShouldReturnStringArray() {
+        String[] exptectedResult = {
+                "4-6",
+                "10-12",
+                "27-29"
+        };
+        assertArrayEquals("givenStringAndPatternShouldReturnStringArray: Should return an array containing first and end positions of the substring where the match occurred.",
+                exptectedResult, OccurenceOfWordInString.getoccurenceOfWordInString("She sells seashells by the seashore", "se"));
     }
+    @Test
+    public void givenStringAndWrongPatternShouldReturnNull() {
+        assertNull("givenStringAndWrongPatternShouldReturnNull: getOccurrencePositions() should return null",
+                OccurenceOfWordInString.getoccurenceOfWordInString("She sells seashells by the seashore", "de"));
+    }
+
 
 
 }
